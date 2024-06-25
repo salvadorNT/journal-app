@@ -1,5 +1,5 @@
-import { Box } from "@mui/material"
-import { Navbar } from "../components"
+import { Box, Toolbar } from "@mui/material"
+import { Navbar, SideBar } from "../components"
 
 const drawerWitdth = 240;
 export const JournalLayout = ({ children }) => {
@@ -8,11 +8,12 @@ export const JournalLayout = ({ children }) => {
             {/* Navbar */}
             <Navbar drawerWitdth={drawerWitdth} />
             {/* Sidebar */}
+            <SideBar drawerWitdth={drawerWitdth}/>
             <Box
                 component={'main'}
                 sx={{ flexGrow: 1, p: 3 }}
             >
-                {/* Toolbar */}
+                <Toolbar/>
                 {children}
             </Box>
         </Box>
