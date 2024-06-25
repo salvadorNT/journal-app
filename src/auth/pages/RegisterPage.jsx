@@ -1,7 +1,6 @@
-import { Link as RouterLink } from "react-router-dom";
-import { Grid, TextField, Typography, Button, Link } from "@mui/material"
-import { Google } from "@mui/icons-material";
-import { AuthLayout } from "../layout/AuthLayout";
+import { Link as RouterLink } from 'react-router-dom';
+import { Grid, TextField, Typography, Button, Link } from '@mui/material';
+import { AuthLayout } from '../layout/AuthLayout';
 
 export const RegisterPage = () => {
   return (
