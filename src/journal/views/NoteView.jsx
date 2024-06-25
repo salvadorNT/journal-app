@@ -10,34 +10,34 @@ export const NoteView = () => {
             </Grid>
 
             <Grid item>
-                <Button color="primary" sx={{padding:2}}>
-                    <SaveOutlined sx={{fontSize:30, mr:1}}/>
+                <Button color="primary" sx={{ padding: 2 }}>
+                    <SaveOutlined sx={{ fontSize: 30, mr: 1 }} />
                     Guardar
                 </Button>
             </Grid>
 
             <Grid container>
                 <TextField
-                type="text"
-                variant="filled"
-                fullWidth
-                placeholder="Ingrese un título"
-                label="Título"
-                sx={{border: 'none', mb:1}}
+                    type="text"
+                    variant="filled"
+                    fullWidth
+                    placeholder="Ingrese un título"
+                    label="Título"
+                    sx={{ border: 'none', mb: 1 }}
                 />
 
                 <TextField
-                type="text"
-                variant="filled"
-                fullWidth
-                multiline
-                placeholder="Qué sucedió el día de hoy?"
-                label="Descripción"
-                minRows={5}
+                    type="text"
+                    variant="filled"
+                    fullWidth
+                    multiline
+                    placeholder="Qué sucedió el día de hoy?"
+                    label="Descripción"
+                    minRows={5}
                 />
             </Grid>
 
-            <ImageGalery/>
+            <ImageGalery />
         </Grid>
 
     )
