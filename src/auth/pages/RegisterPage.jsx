@@ -2,17 +2,32 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Grid, TextField, Typography, Button, Link } from '@mui/material';
 import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks';
+import { useState } from 'react';
+
+const formData = {
+  displayName: '',
+  email: '',
+  password: ''
+}
+
+const formValidations = {
+  email: [(value) => value.includes('@'), 'El correo debe de tener una @'],
+  password: [(value) => value.length >=6, 'El password debe de tener mas de 6 letras.'],
+  displayName: [(value) => value.length >=1, 'El nombre es obligatorio.']
+}
 
 export const RegisterPage = () => {
 
-  const {displayName, email, password, onInputChange } = useForm({
-    displayName: '',
-    email: '',
-    password: ''
-  });
+  const [formSubmited, setFormSubmited] = useState(false)
+
+  const { displayName, email, password, onInputChange,
+    isFormValid, displayNameValid, emailValid, passwordValid
+  } = useForm(formData, formValidations);
+
 
   const onSubmit = (event) => {
     event.preventDefault();
+    setFormSubmited(true);
   }
 
   return (
@@ -29,6 +44,8 @@ export const RegisterPage = () => {
               name="displayName"
               value={displayName}
               onChange={onInputChange}
+              error={!!displayNameValid && formSubmited}
+              helperText={displayNameValid}
             />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
@@ -40,6 +57,8 @@ export const RegisterPage = () => {
               name="email"
               value={email}
               onChange={onInputChange}
+              error={!!emailValid && formSubmited}
+              helperText={emailValid}
             />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
@@ -52,6 +71,8 @@ export const RegisterPage = () => {
               name="password"
               value={password}
               onChange={onInputChange}
+              error={!!passwordValid && formSubmited}
+              helperText={passwordValid}
             />
           </Grid>
 
