@@ -4,7 +4,7 @@ import { statusTypes } from './statusTypes';
 export const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        status: statusTypes.notAuthenticated,
+        status: statusTypes.checking,
         uid: null,
         email: null,
         displayName: null,
