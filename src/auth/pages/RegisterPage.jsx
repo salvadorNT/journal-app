@@ -52,7 +52,7 @@ export const RegisterPage = () => {
               value={displayName}
               onChange={onInputChange}
               error={!!displayNameValid && formSubmited}
-              helperText={!!displayNameValid && formSubmited}
+              helperText={(!!displayNameValid && formSubmited) && displayNameValid}
             />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
@@ -65,7 +65,7 @@ export const RegisterPage = () => {
               value={email}
               onChange={onInputChange}
               error={!!emailValid && formSubmited}
-              helperText={emailValid}
+              helperText={(!!emailValid && formSubmited) && emailValid}
             />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
@@ -79,7 +79,7 @@ export const RegisterPage = () => {
               value={password}
               onChange={onInputChange}
               error={!!passwordValid && formSubmited}
-              helperText={passwordValid}
+              helperText={(!!passwordValid && formSubmited) && passwordValid}
             />
           </Grid>
 
