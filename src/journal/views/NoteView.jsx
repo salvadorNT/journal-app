@@ -1,9 +1,9 @@
-import { SaveOutlined } from "@mui/icons-material"
-import { Button, Grid, TextField, Typography } from "@mui/material"
+import { SaveOutlined, UploadOutlined } from "@mui/icons-material"
+import { Button, Grid, IconButton, TextField, Typography } from "@mui/material"
 import { ImageGalery } from "../components"
 import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../../hooks/useForm"
-import { useEffect, useMemo } from "react"
+import { useEffect, useMemo, useRef } from "react"
 import { setActiveNote, startSavingNote } from "../../store/journal"
 import Swal from "sweetalert2"
 import 'sweetalert2/dist/sweetalert2.css';
@@ -17,6 +17,8 @@ export const NoteView = () => {
         const newDate = new Date(date);
         return newDate.toUTCString();
     }, [date])
+
+    const fileInputRef = useRef()
 
     const dispatch = useDispatch();
 
@@ -34,6 +36,12 @@ export const NoteView = () => {
     const onSaveNote = () => {
         dispatch(startSavingNote());
     }
+    const onFileInputChange = ({target}) => {
+        if(target.files ==0) return;
+
+        // dispatch(startUploadingFiles(target.files));
+        console.log(target.files);
+    }
 
     return (
         <Grid alignItems='center' container direction='row' justifyContent='space-between' sx={{ mb: 1 }}>
@@ -42,6 +50,21 @@ export const NoteView = () => {
             </Grid>
 
             <Grid item>
+
+                <input
+                    type="file"
+                    multiple
+                    ref={fileInputRef}
+                    onChange={onFileInputChange}
+                    style={{display: 'none'}}
+                />
+                <IconButton
+                    color="primary"
+                    disabled={isSaving}
+                    onClick={()=> fileInputRef.current.click()}
+                >
+                    <UploadOutlined/>
+                </IconButton>
                 <Button disabled={isSaving} onClick={onSaveNote} color="primary" sx={{ padding: 2 }}>
                     <SaveOutlined sx={{ fontSize: 30, mr: 1 }} />
                     Guardar
