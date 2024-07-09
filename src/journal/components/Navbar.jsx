@@ -3,12 +3,14 @@ import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { startLogout } from '../../store/auth/thunks'
+import { clearNotesLogout } from '../../store/journal'
 
 export const Navbar = ({ drawerWitdth }) => {
 
     const dispatch = useDispatch();
     const onLogout = () => {
         dispatch(startLogout());
+        dispatch(clearNotesLogout())
     }
 
     return (
